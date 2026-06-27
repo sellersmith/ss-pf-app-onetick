@@ -5,6 +5,14 @@
   "description": "OneTick admin artifact producer for PageFly app-platform",
   "license": "UNLICENSED",
   "type": "module",
+  "main": "apps/onetick/src/index.ts",
+  "exports": {
+    ".": "./apps/onetick/src/index.ts",
+    "./manifest": "./apps/onetick/manifest.ts",
+    "./admin-runtime-loader": "./apps/onetick/src/admin/runtime-loader.tsx",
+    "./storefront/runtime-contract": "./apps/onetick/src/storefront/runtime-contract.ts",
+    "./storefront/runtime-installer": "./apps/onetick/src/storefront/runtime-installer.ts"
+  },
   "packageManager": "npm@11.6.2",
   "engines": {
     "node": ">=24.0.0",
@@ -45,4 +53,3 @@
     "apps/*"
   ]
 }
-

@@ -46,5 +46,22 @@ if (onetickPackageJson.scripts?.['package:admin-artifact'] !== 'node ../../scrip
   throw new Error('OneTick package is missing package:admin-artifact contract')
 }
 
-process.stdout.write('ci-contract-ok\n')
+const requiredRootExports = {
+  '.': './apps/onetick/src/index.ts',
+  './manifest': './apps/onetick/manifest.ts',
+  './admin-runtime-loader': './apps/onetick/src/admin/runtime-loader.tsx',
+  './storefront/runtime-contract': './apps/onetick/src/storefront/runtime-contract.ts',
+  './storefront/runtime-installer': './apps/onetick/src/storefront/runtime-installer.ts',
+}
 
+for (const [exportName, target] of Object.entries(requiredRootExports)) {
+  if (packageJson.exports?.[exportName] !== target) {
+    throw new Error(`OneTick root package export ${exportName} must point to ${target}`)
+  }
+
+  if (!fs.existsSync(path.join(repoRoot, target.replace(/^\.\//, '')))) {
+    throw new Error(`OneTick root package export ${exportName} points to missing file ${target}`)
+  }
+}
+
+process.stdout.write('ci-contract-ok\n')
