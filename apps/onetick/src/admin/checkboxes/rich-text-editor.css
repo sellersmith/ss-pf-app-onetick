@@ -1,0 +1,84 @@
+/* App-local OneTick styling ported from TailorKit; keep selectors scoped to the internal app UI. */
+.onetick-quill {
+  border-radius: var(--p-border-radius-200);
+  background-color: var(--p-color-bg-surface);
+}
+
+.onetick-quill--disabled {
+  color: var(--p-color-text-disabled);
+  background-color: #f2f2f2;
+  border: 1px solid #f2f2f2;
+}
+
+.onetick-quill .ql-toolbar.ql-snow {
+  border: var(--p-border-width-0165) solid var(--p-color-input-border);
+  border-radius: var(--p-border-radius-200);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-color: #ccc;
+  border-bottom: 0;
+}
+
+.onetick-quill .ql-container.ql-snow {
+  border: var(--p-border-width-0165) solid var(--p-color-input-border);
+  border-radius: var(--p-border-radius-200);
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-color: #ccc;
+  font-family: var(--p-font-family-sans);
+}
+
+.onetick-quill .ql-container.ql-snow .ql-editor {
+  min-height: 150px;
+  max-height: 400px;
+}
+
+.onetick-quill--disabled .ql-toolbar .ql-stroke {
+  fill: none !important;
+  stroke: #aaa !important;
+}
+
+.onetick-quill--disabled .ql-toolbar .ql-fill {
+  fill: #aaa !important;
+  stroke: none !important;
+}
+
+.onetick-quill--disabled .ql-toolbar .ql-picker {
+  color: #aaa !important;
+}
+
+.onetick-quill--error {
+  border: var(--p-border-width-0165) solid var(--p-color-border-critical-secondary);
+  background-color: var(--p-color-bg-surface-critical);
+}
+
+.onetick-quill .ql-editor.ql-blank::before {
+  font-style: normal;
+}
+
+.onetick-quill--disabled .ql-editor.ql-blank::before {
+  color: var(--p-color-text-disabled);
+}
+
+.onetick-quill .ql-snow .ql-formats,
+.onetick-quill .ql-snow.ql-toolbar .ql-formats {
+  display: inline-flex !important;
+  margin-right: 0 !important;
+}
+
+.onetick-quill .ql-snow .ql-formats.ql-formats-divider {
+  border-right: 1px solid #ccc !important;
+  margin-right: 4px !important;
+  padding-right: 4px !important;
+  height: 100% !important;
+}
+
+.onetick-quill .ql-snow.ql-toolbar button,
+.onetick-quill .ql-snow .ql-toolbar button {
+  background: none !important;
+  border: none !important;
+  cursor: pointer !important;
+  display: flex !important;
+  width: fit-content !important;
+  float: none !important;
+}

@@ -1,0 +1,37 @@
+{
+  "name": "@pagefly/app-onetick",
+  "version": "0.1.0",
+  "private": true,
+  "description": "PageFly internal OneTick app package",
+  "main": "src/backend/plugin.ts",
+  "scripts": {
+    "build": "npm run build:server && npm run build:theme",
+    "build:server": "npm --workspace pagefly-server run build:apps -- --app onetick",
+    "build:theme": "npm --workspace pagefly-app-platform-src run build -- --app onetick",
+    "build:admin-runtime": "vite build --config vite.admin-runtime.config.mts",
+    "build:admin-artifact": "npm run build:admin-runtime && npm run package:admin-artifact",
+    "package:admin-artifact": "node ../../scripts/package-app-platform-admin-artifact.mjs --app onetick"
+  },
+  "sideEffects": [
+    "**/*.css",
+    "src/storefront/runtime/**/*.ts"
+  ],
+  "dependencies": {
+    "@shopify/polaris-icons": "^9.3.1",
+    "morphdom": "^2.7.4",
+    "parchment": "^3.0.0",
+    "quill": "~2.0.2",
+    "quill-delta": "^5.1.0",
+    "react-quill-new": "3.4.6",
+    "tinycolor2": "1.4.2"
+  },
+  "devDependencies": {
+    "@types/tinycolor2": "1.4.3"
+  },
+  "peerDependencies": {
+    "@shopify/app-bridge-react": "^4.2.3",
+    "@shopify/polaris": "13.9.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}

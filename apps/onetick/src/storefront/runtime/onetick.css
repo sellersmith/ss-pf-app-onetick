@@ -1,0 +1,1163 @@
+:root {
+  --bg-preview-po: #f7f7f7;
+}
+
+.onetick-d-flex {
+  display: flex;
+}
+
+.onetick-flex-1 {
+  flex: 1;
+}
+
+.onetick-align-center {
+  align-items: center;
+}
+
+.onetick-flex-col {
+  flex-direction: column;
+}
+
+.onetick-wrap {
+  flex-wrap: wrap;
+}
+
+.onetick-g-12 {
+  gap: 12px;
+}
+
+.onetick-g-10 {
+  gap: 10px;
+}
+
+.onetick-g-8 {
+  gap: 8px;
+}
+
+.onetick-g-6 {
+  gap: 6px;
+}
+
+.onetick-g-4 {
+  gap: 4px;
+}
+
+.onetick-flex-direction-column {
+  flex-direction: column;
+}
+
+.onetick-r-g-10 {
+  row-gap: 8px;
+}
+
+.onetick-label,
+.onetick-label * {
+  font-size: 16px;
+  word-break: break-word;
+}
+
+.onetick-m-0 {
+  margin: 0 !important;
+}
+
+.onetick-mt-10 {
+  margin-top: 10px !important;
+}
+
+.onetick-mt-12 {
+  margin-top: 12px !important;
+}
+
+.onetick-mb-12 {
+  margin-bottom: 12px !important;
+}
+
+.onetick-price {
+  word-break: break-word;
+  font-size: 16px;
+}
+
+.onetick-compared-price {
+  word-break: break-word;
+  font-size: 16px;
+  color: #616161;
+  text-decoration: line-through;
+}
+
+.onetick-description,
+.onetick-description * {
+  word-break: break-word;
+  font-size: 14px;
+}
+
+.onetick-image {
+  margin: 0 !important;
+  min-width: 40px !important;
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 4px;
+  border: 1px solid #e3e3e3;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.onetick-image-checkbox {
+  margin: 0 !important;
+  width: var(--o-is, 64px);
+  height: var(--o-is, 64px);
+  border-radius: 4px;
+  border: 1px solid #e3e3e3;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.onetick-checkbox {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  font-size: 22px;
+  min-width: 20px;
+  width: 20px;
+  height: 20px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.onetick-checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.onetick-checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: var(--o-ct, 4px);
+  background-color: var(--o-dbg, #ffffff);
+  border-color: var(--o-db, #8a8a8a);
+  border-width: 1px;
+  border-style: solid;
+}
+
+/* Active background */
+.onetick-checkbox input:checked ~ .onetick-checkmark {
+  background-color: var(--o-abg, #303030);
+  border-color: var(--o-ab, #303030);
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.onetick-checkmark:after {
+  content: '';
+  position: absolute;
+  display: none;
+  box-sizing: border-box;
+}
+
+/* Show the checkmark when checked */
+.onetick-checkbox input:checked ~ .onetick-checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.onetick-checkbox .onetick-checkmark:after {
+  left: 4px;
+  top: 4.5px;
+  width: 10px;
+  height: 6px;
+  border: solid var(--o-ti, #ffffff);
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(-45deg) scaleX(-1);
+  -ms-transform: rotate(-45deg) scaleX(-1);
+  transform: rotate(-45deg) scaleX(-1);
+}
+
+.onetick-checkbox-container {
+  padding: var(--o-padding, 0px);
+  border-radius: 10px;
+  background: var(--o-cdbg, transparent);
+  border: 1px solid var(--o-cdb, #ffffff00);
+  display: block;
+  max-width: 100%;
+  cursor: pointer;
+  line-height: 20px !important;
+}
+
+onetick-group-checkboxes {
+  display: grid;
+  gap: 16px;
+}
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #fff;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.onetick-checkbox-slider.loading::after,
+.onetick-checkbox-full-width.loading::after {
+  content: '';
+  position: absolute;
+  top: calc(50% - 20px);
+  left: calc(50% - 20px);
+  width: 40px;
+  height: 40px;
+  border: 5px solid #fff;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+  transform: translate(-50%, -50%);
+}
+
+.wrapper-skeleton-checkbox {
+  display: flex;
+  align-items: start;
+  padding: 16px;
+  width: 100%;
+}
+
+.onetick-skeleton-content {
+  width: 100%;
+  padding: 0px 0px 0px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.input-skeleton {
+  display: block !important;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  background-color: #ccc;
+  background-image: linear-gradient(90deg, #ddd 0px, #e8e8e8 40px, #ddd 80px);
+  background-size: 200% 100%;
+  animation: skeleton 2s infinite linear;
+}
+
+.onetick-checkbox-slider {
+  position: relative;
+  min-width: 80%;
+}
+
+.onetick-checkbox-full-width {
+  position: relative;
+  width: 100%;
+}
+onetick-variant-selector-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1 0 0;
+}
+
+onetick-variant-selector * {
+  cursor: pointer;
+}
+
+onetick-variant-selector {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  align-items: center;
+  gap: 4px;
+  opacity: 0.8;
+}
+
+onetick-variant-selector > label,
+onetick-variant-selector > span {
+  font-size: 14px !important;
+  color: #616161;
+  font-weight: 450;
+  line-height: 20px;
+  background: transparent;
+}
+
+onetick-variant-selector > span {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #303030;
+}
+
+onetick-variant-selector > select {
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.onetick-checkbox-content {
+  display: flex;
+  max-width: 100%;
+  flex-direction: column;
+  row-gap: 8px;
+  flex-wrap: wrap;
+  word-break: break-all;
+  /* margin-top: 10px !important; */
+}
+
+.onetick-img-checkbox {
+  height: fit-content;
+  align-items: center;
+}
+
+onetick-popup {
+  display: block;
+  /* margin-top: 10px; */
+}
+
+onetick-popup .onetick-popup-btn {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.onetick-popup {
+  display: none;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  z-index: 9999;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.onetick-popup.show {
+  display: flex;
+  align-items: center;
+}
+
+body:has(.onetick-popup.show) {
+  overflow: hidden;
+}
+
+.onetick-popup .modal-content {
+  position: relative;
+  background-color: #ffffff;
+  margin: auto auto;
+  padding: 24px;
+  gap: 16px;
+  border-radius: 16px;
+  width: 60%;
+  display: grid;
+  max-height: min(calc(100vh - 120px), 500px);
+  grid-template-rows: auto 1fr;
+  overflow: auto;
+  -webkit-animation-name: fadeIn; /* Fade in the background */
+  -webkit-animation-duration: 0.4s;
+  animation-name: fadeIn;
+  animation-duration: 0.4s;
+}
+
+@media screen and (max-width: 490px) {
+  .onetick-popup .modal-content {
+    width: 100%;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.onetick-popup .modal-header h2 {
+  word-break: break-word;
+  margin: 0px;
+  padding-right: 30px;
+  color: #040404;
+}
+
+.onetick-popup .modal-body {
+  word-break: break-word;
+}
+
+.onetick-popup .close {
+  position: absolute;
+  right: 20px;
+  top: 14px;
+  display: flex;
+  padding: 4px;
+}
+
+.onetick-popup .close:hover {
+  background-color: #0000000d;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* Progress bar css */
+onetick-progress-bar div:empty {
+  display: block;
+}
+.onetick-rewards {
+  font-size: 15px;
+  line-height: 20px;
+  padding: 0px 16px 16px;
+  text-align: center;
+}
+.onetick-rewards-bar-background {
+  background-color: rgb(233, 247, 247);
+  border-radius: 16px;
+  height: 10px;
+  margin-top: 15.5px;
+  overflow: hidden;
+  width: 100%;
+}
+.onetick-rewards-bar-progress {
+  background-color: rgb(23, 158, 156);
+  width: 0%;
+  height: inherit;
+  overflow: hidden;
+  transition: all 0.5s ease 0s;
+}
+.onetick-rewards-tier-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: -24.5px;
+}
+.onetick-rewards-tier {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  max-height: 100px;
+  max-width: 75px;
+  min-width: 75px;
+  width: 75px;
+  transform: translateX(50%);
+}
+.onetick-rewards-tier-circle {
+  border-radius: 50%;
+  display: flex;
+  height: 40px;
+  margin-left: 2.5px;
+  margin-right: 2.5px;
+  width: 40px;
+}
+.onetick-rewards-tier-icon {
+  height: 25px;
+  width: 25px;
+  margin: auto;
+}
+.onetick-rewards-tier-description {
+  word-wrap: normal;
+  font-size: x-small;
+  line-height: 1.25;
+  margin-top: 5px;
+  text-align: center;
+}
+
+/* Product Recommendation */
+onetick-product-offers-group {
+  min-width: 0;
+}
+
+.onetick-upsell-list {
+  padding: 15px 30px;
+}
+
+.onetick-product-offers-title {
+  display: none;
+  text-align: center;
+  word-break: break-word;
+  margin: 0;
+}
+
+.onetick-product-offers-title.show {
+  display: block !important;
+}
+
+.onetick-upsell-items {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.onetick-offer-product {
+  overflow: hidden;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0px;
+}
+
+.onetick-offer-item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: calc(55% - 12px);
+  width: 100%;
+}
+
+.onetick-flex-column .onetick-offer-item-info {
+  max-width: 100%;
+}
+
+.onetick-offer-item-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: stretch;
+}
+
+.onetick-offer-item-title {
+  margin: 0px !important;
+  cursor: pointer;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+.onetick-offer-item-price-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 6px;
+  align-self: stretch;
+  font-weight: 500;
+  font-size: 12px;
+  /* row-gap: 4px; */
+}
+
+.numberstyle-qty {
+  width: 100%;
+  display: flex;
+  border-radius: var(--po-sbr, 0px);
+  overflow: hidden;
+}
+
+.numberstyle-qty input,
+.numberstyle-qty .qty-btn {
+  font-weight: 350;
+  position: relative;
+  float: left;
+  height: 30px;
+  padding: 0;
+  margin: 0;
+  border: 0px;
+  text-align: center;
+  line-height: 40px;
+  outline: 0;
+}
+
+.qty-rem {
+  border-radius: var(--po-bs, 0px) 0 0 var(--po-bs, 0px);
+}
+
+.qty-add {
+  border-radius: 0 var(--po-bs, 0px) var(--po-bs, 0px) 0;
+}
+
+.numberstyle-qty .qty-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  font-size: 11px;
+  cursor: pointer;
+  z-index: 2;
+  user-select: none;
+  transition: all 250ms ease;
+  background: var(--bg-preview-po);
+}
+
+.numberstyle-qty .qty-btn.disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.numberstyle-qty input {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  border-radius: 0px;
+  color: #747474;
+  font-size: 11px;
+  font-weight: 700;
+  z-index: 1;
+  background: var(--bg-preview-po);
+}
+
+.numberstyle-qty input:focus {
+  outline: 0;
+  box-shadow: 0px;
+}
+
+.numberstyle-qty input[type='number']::-webkit-inner-spin-button,
+.numberstyle-qty input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.numberstyle-qty input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+/*
+ * More from me link 🔥
+ */
+.more {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  padding: 7px 21px;
+  border-radius: 8px;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.2);
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  overflow: hidden;
+  z-index: 1;
+  animation: reveal 5000ms cubic-bezier(0.87, -0.41, 0.19, 1.44);
+}
+
+.more::before {
+  display: block;
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  max-width: 20%;
+  height: 100%;
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0);
+  transition:
+    max-width 0ms ease 250ms,
+    background-color 250ms ease;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+.more:hover::before {
+  max-width: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  transition: all 250ms ease;
+}
+
+@keyframes reveal {
+  0%,
+  90% {
+    bottom: -30px;
+  }
+  100% {
+    bottom: 15px;
+  }
+}
+
+.onetick-offer-item-price {
+  color: rgba(var(--color-foreground, #000000), 0.75);
+}
+
+.onetick-offer-item-compared-price {
+  font-weight: 400;
+  -webkit-text-decoration-line: line-through;
+  text-decoration-line: line-through;
+  opacity: 0.6;
+  font-size: 10px;
+}
+
+.onetick-offer-item-compared-price:empty,
+.onetick-offer-item-price:empty {
+  display: none;
+}
+
+.onetick-offer-item-content {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.select-arrow {
+  position: absolute;
+  width: 8px;
+  height: 5px;
+  top: calc(50% - 8px);
+  right: 15px;
+  margin: auto;
+}
+
+.onetick-upsell-button {
+  width: 100%;
+  max-width: 100%;
+  /* flex: 0 1 auto;
+  display: flex; */
+  gap: 4px;
+  /* align-items: center;
+  justify-content: center; */
+  padding: 4px 12px;
+  border: 0px;
+  text-align: center;
+  border-radius: var(--po-bs, 0px);
+  background: var(--bg-preview-po);
+  cursor: pointer;
+  max-width: 100%;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  border-radius: var(--po-bbr, 0px);
+}
+
+.onetick-upsell-button-icon {
+  width: 8px;
+  height: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.warning-sold-out {
+  display: block !important;
+  color: #bf0d0d;
+  font-size: 12px;
+}
+
+.onetick-upsell-button > span {
+  font-size: 11px;
+  font-weight: 650;
+  color: #616161;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+}
+
+.onetick-upsell-button:hover {
+  background: #000000d9;
+  color: #ffffff;
+}
+
+.onetick-upsell-button:hover > span {
+  color: #ffffff;
+}
+
+.onetick-upsell-button:hover path {
+  fill: #ffffff;
+}
+
+.onetick-upsell-button.loading {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.onetick-label .ot-paragraph {
+  font-weight: inherit;
+}
+
+.onetick-upsell-button.disable {
+  pointer-events: none !important;
+  opacity: 0.5 !important;
+}
+
+.onetick-offer-container {
+  max-width: 100%;
+  width: 100%;
+  overflow: visible;
+  position: relative;
+}
+
+.onetick-slider-items,
+.onetick-slider-items-loading {
+  scroll-snap-type: x mandatory;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow: auto;
+  list-style: none;
+  overflow-x: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+  gap: var(--po-is, 0px);
+}
+
+/*
+  This rule hides the scrollbar for elements with the class `onetick-slider-items`
+  on browsers that support the `::-webkit-scrollbar` pseudo-element,
+  such as Safari and Chrome. The `display: none;` property ensures that
+  the scrollbar is completely removed from view while still allowing
+  the content to be scrollable.
+*/
+.onetick-slider-items::-webkit-scrollbar {
+  display: none;
+}
+
+.onetick-slider-items .onetick-offer-product,
+.onetick-slider-items-loading .onetick-item-loading {
+  min-width: calc((100% - (var(--po-ips, 1) - 1) * var(--po-is, 0px)) / var(--po-ips, 1));
+  max-width: calc((100% - (var(--po-ips, 1) - 1) * var(--po-is, 0px)) / var(--po-ips, 1));
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  width: calc((100% - (var(--po-ips, 1) - 1) * var(--po-is, 0px)) / var(--po-ips, 1));
+}
+
+.onetick-offer-container-item {
+  gap: 8px;
+  display: flex;
+}
+
+.onetick-offer-container-item.onetick-flex-row {
+  gap: 12px;
+}
+
+.loading .onetick-offer-container-item {
+  position: relative;
+  pointer-events: none !important;
+}
+
+.loader-icon {
+  display: none;
+}
+
+.loading .onetick-offer-container-item .loader-icon {
+  display: block;
+  position: absolute;
+  top: calc(50% - 25px);
+  right: calc(50% - 25px);
+  z-index: 1000;
+}
+
+.onetick-loading-overlay {
+  display: none;
+}
+
+.loading .onetick-loading-overlay {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ffffff;
+  z-index: 1;
+  opacity: 0.5;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.onetick-flex-row {
+  flex-direction: row;
+}
+
+.onetick-flex-column {
+  flex-direction: column;
+}
+
+.control-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translate(0%, -50%);
+  margin: 0 !important;
+  outline: none;
+  border-width: 0px;
+  border-radius: 50% !important;
+  background: #00000066 !important;
+  cursor: pointer;
+  text-align: center;
+  z-index: 1;
+  height: 24px;
+  width: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 !important;
+}
+
+.control-arrow:hover {
+  background: #000000 !important;
+}
+
+.control-prev.control-arrow {
+  left: -16px;
+  z-index: 100;
+}
+
+.control-prev-checkbox.control-arrow {
+  left: 6px;
+}
+.control-next.control-arrow {
+  right: -16px;
+  z-index: 100;
+}
+
+.control-next-checkbox.control-arrow {
+  right: 6px;
+}
+
+.onetick-offer-item-img {
+  width: 45%;
+  max-width: 45%;
+  height: fit-content;
+  object-fit: var(--po-mf, contain);
+  object-position: center;
+  border-radius: var(--po-mbr, 0px);
+  aspect-ratio: var(--po-mr, 1 / 1);
+}
+
+.onetick-flex-column .onetick-offer-item-img,
+.onetick-flex-column .onetick-img-skeleton {
+  width: 100%;
+  max-width: 100%;
+}
+
+onetick-product-offers {
+  display: flex;
+  flex-direction: column;
+  padding: 36px 16px;
+  gap: 12px;
+  position: relative;
+}
+
+onetick-product-offers:has(button[id='prev-btn']) {
+  padding: 24px 24px;
+}
+
+onetick-offer-variant-selector {
+  position: relative;
+  width: 100%;
+}
+
+onetick-offer-variant-selector > select {
+  color: #616161;
+  border: none;
+  height: 100%;
+  -moz-appearance: none; /* Firefox */
+  -webkit-appearance: none; /* Safari and Chrome */
+  appearance: none;
+  text-overflow: ellipsis;
+  text-wrap: nowrap;
+  width: 100%;
+  min-width: 50px;
+  background-color: var(--bg-preview-po);
+  cursor: pointer;
+  padding: 6px 32px 6px 12px;
+  height: 30px;
+  font-size: 11px;
+  border-radius: var(--po-sbr, 0px);
+  margin: 0px;
+}
+
+onetick-offer-variant-selector > select:focus-visible {
+  outline: none !important;
+  box-shadow: none;
+}
+
+onetick-offer-variant-selector > svg {
+  pointer-events: none;
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translate(0%, -50%);
+}
+
+.onetick-atc-group {
+  flex-wrap: wrap;
+}
+
+.onetick-quantity-selector {
+  display: flex;
+  width: 100%;
+  padding: 6px 12px;
+  border: 1px solid #8a8a8a;
+  border-radius: 8px;
+  background: #fdfdfd;
+  min-width: 5px;
+}
+
+.onetick-grid-items {
+  display: grid;
+  grid-template-columns: repeat(var(--po-cn, 1), 1fr);
+  gap: var(--po-is, 0px);
+}
+
+.onetick-grid-items-preview-setting {
+  column-gap: 12px;
+  row-gap: 16px;
+}
+
+.onetick-grid-items-loading {
+  display: grid;
+  overflow: hidden;
+  grid-template-columns: repeat(var(--po-cn, 1), 1fr);
+  gap: calc(12px + var(--po-is, 0px));
+}
+
+.onetick-item-loading {
+  display: flex !important;
+  gap: 12px;
+  padding: 12px;
+}
+
+.onetick-img-skeleton {
+  display: block !important;
+  width: 45%;
+  aspect-ratio: 1 / 1;
+  border-radius: 8px;
+  background-color: #ccc;
+  background-image: linear-gradient(90deg, #ddd 0px, #e8e8e8 40px, #ddd 80px);
+  background-size: 200% 100%;
+  animation: skeleton 2s infinite linear;
+}
+
+.onetick-lines-skeleton {
+  width: 55%;
+  gap: 8px;
+}
+
+.onetick-line-skeleton {
+  height: 20px;
+  border-radius: 8px;
+  display: block !important;
+  background-color: #ccc;
+  background-image: linear-gradient(90deg, #ddd 0px, #e8e8e8 40px, #ddd 80px);
+  background-size: 200% 100%;
+  animation: skeleton 2s infinite linear;
+}
+
+.onetick-lines-skeleton .onetick-line-skeleton:last-child {
+  width: 50%;
+}
+
+@keyframes skeleton {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.onetick-offer-product.onetick-flex-column .onetick-offer-item-info {
+  height: 100%;
+  justify-content: space-between;
+}
+
+@media (min-width: 768px) {
+  .onetick-offer-product.onetick-flex-column .onetick-offer-item-title {
+    -webkit-line-clamp: 3;
+  }
+
+  /* .control-next.control-arrow {
+    right: -28px;
+  }
+
+  .control-prev.control-arrow {
+    left: -28px;
+  } */
+}
+
+.ltr {
+  text-align: left;
+}
+
+.rtl {
+  text-align: right;
+}
+
+.ot-editor-text-bold {
+  font-weight: bold;
+}
+
+.ot-editor-text-italic {
+  font-style: italic;
+}
+
+.ot-editor-text-underline {
+  text-decoration: underline;
+}
+
+.ot-editor-text-strikethrough {
+  text-decoration: line-through;
+}
+
+.ot-editor-text-underlineStrikethrough {
+  text-decoration: underline line-through;
+}
+
+.ot-editor-text-code {
+  background-color: rgb(240, 242, 245);
+  padding: 1px 0.25rem;
+  font-size: 94%;
+}
+
+.ot-editor-link {
+  color: rgb(33, 111, 219);
+}
+
+.ot-paragraph {
+  margin: 0;
+  margin-bottom: 8px;
+  position: relative;
+  font-size: var(--p-font-size-325);
+}
+
+.ot-paragraph:last-child {
+  margin-bottom: 0;
+}
+
+.onetick-form-loading-overlay {
+  opacity: 0.5;
+  pointer-events: none;
+}

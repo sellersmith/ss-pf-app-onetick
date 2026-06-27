@@ -1,0 +1,48 @@
+{
+  "name": "ss-pf-app-onetick",
+  "version": "0.1.0",
+  "private": true,
+  "description": "OneTick admin artifact producer for PageFly app-platform",
+  "license": "UNLICENSED",
+  "type": "module",
+  "packageManager": "npm@11.6.2",
+  "engines": {
+    "node": ">=24.0.0",
+    "npm": ">=11.0.0"
+  },
+  "scripts": {
+    "ci:contract": "node scripts/verify-ci-contract.mjs",
+    "build:admin-artifact": "npm --workspace @pagefly/app-onetick run build:admin-artifact",
+    "package:admin-artifact": "npm --workspace @pagefly/app-onetick run package:admin-artifact",
+    "deploy:admin-artifact": "node scripts/deploy-app-platform-admin-artifact.mjs",
+    "deploy:admin-artifact:dry-run": "node scripts/deploy-app-platform-admin-artifact.mjs --dry-run"
+  },
+  "dependencies": {
+    "@shopify/app-bridge-react": "^4.2.3",
+    "@shopify/polaris": "13.9.5",
+    "@shopify/polaris-icons": "^9.3.1",
+    "lodash": "4.17.21",
+    "morphdom": "^2.7.4",
+    "parchment": "^3.0.0",
+    "quill": "~2.0.2",
+    "quill-delta": "^5.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-quill-new": "3.4.6",
+    "react-router-dom": "^6.30.2",
+    "tinycolor2": "1.4.2"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.197",
+    "@types/node": "24.10.0",
+    "@types/tinycolor2": "1.4.3",
+    "@vitejs/plugin-react": "^5.1.0",
+    "typescript": "5.9.3",
+    "vite": "^7.2.2",
+    "vite-plugin-svgr": "^4.5.0"
+  },
+  "workspaces": [
+    "apps/*"
+  ]
+}
+

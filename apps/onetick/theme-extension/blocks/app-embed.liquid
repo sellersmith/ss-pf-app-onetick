@@ -1,0 +1,16 @@
+{% # theme-check-disable %}
+
+{% comment %}
+  OneTick theme source is owned by apps/onetick; app-platform materializes it into PageFly's Shopify extension shell.
+{% endcomment %}
+
+{% render 'pagefly-onetick-config' %}
+
+{% schema %}
+{
+  "name": "OneTick",
+  "target": "body",
+  "javascript": "pagefly-onetick.js",
+  "settings": []
+}
+{% endschema %}

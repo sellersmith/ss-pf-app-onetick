@@ -1,0 +1,34 @@
+// OneTick storefront runtime runs from the generated theme asset and must fail open on merchant storefronts.
+import { DEFAULT_ONETICK_CHECKBOX_STYLING_JSON } from './runtime-style-defaults'
+
+export const ONETICK_STOREFRONT_LIQUID_CONFIG = `
+{% liquid
+  assign onetick_checkbox_data = app.metafields.onetick_checkbox
+  assign onetick_product_offer_styling = app.metafields.onetick_styling_product_offers.styling_product_offers.value
+  assign onetick_cart_order = cart
+  assign onetick_list_cart_product = cart.items | map: 'product'
+  assign onetick_list_cart_product_collections = cart.items | map: 'product' | map: 'collections'
+  assign onetick_custom_selector = app.metafields.onetick_custom_selector.custom_selector.value
+  assign onetick_storefront_access_token = app.metafields.onetick_storefront.storefront_access_token.value
+  assign onetick_checkbox_styling = app.metafields.onetick_global_styling.checkbox.value
+%}
+
+<script id='onetick-config' type='application/json'>
+  {
+    "metafieldsCheckboxData": {{ onetick_checkbox_data | json }},
+    "metafieldsStylingProductOffers": {{ onetick_product_offer_styling | json }},
+    "storefrontAccessToken": {{ onetick_storefront_access_token.access_token | default: onetick_storefront_access_token | json }},
+    "productOffers": {{ app.metafields.onetick_product_offers | json }},
+    "conditions": {{ app.metafields.onetick_condition | json }},
+    "productsCount": {{ shop.products_count }},
+    "moneyFormat": {{ shop.money_format | json }},
+    "isCartPage": {% if template == 'cart' %}true{% else %}false{% endif %},
+    "cart": {{ onetick_cart_order | json }},
+    "listCartProduct": {{ onetick_list_cart_product | json }},
+    "listCartProductCollections": {{ onetick_list_cart_product_collections | json }},
+    "customSelector": {{ onetick_custom_selector | json }},
+    "product": {{ product | json }},
+    "checkboxStyling": {% if onetick_checkbox_styling %}{{ onetick_checkbox_styling | json }}{% else %}${DEFAULT_ONETICK_CHECKBOX_STYLING_JSON}{% endif %}
+  }
+</script>
+`.trim()

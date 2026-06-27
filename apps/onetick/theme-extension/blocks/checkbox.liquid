@@ -1,0 +1,36 @@
+{% # theme-check-disable %}
+
+{% comment %}
+  OneTick theme source is owned by apps/onetick; app-platform materializes it into PageFly's Shopify extension shell.
+{% endcomment %}
+
+{% liquid
+  assign is_design_mode = request.design_mode
+%}
+
+{% render 'pagefly-onetick-master-product' %}
+
+{% if is_design_mode %}
+  <div class='onetick-checkboxes-warning-banner' style='display: none;'>
+    {% render 'pagefly-onetick-checkbox-group-banner' %}
+  </div>
+{% endif %}
+
+<onetick-group-checkboxes></onetick-group-checkboxes>
+
+{% schema %}
+{
+  "name": "Upsell Cross-sell Block",
+  "target": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "OneTick add-on product",
+      "info": "OneTick automatically displays all active checkboxes applied to this trigger product within one app block."
+    }
+  ],
+  "disabled_on": {
+    "groups": ["footer", "header"]
+  }
+}
+{% endschema %}

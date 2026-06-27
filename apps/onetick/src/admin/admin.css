@@ -1,0 +1,11 @@
+.ot-sticky-preview-card {
+  position: sticky;
+  top: 16px;
+  align-self: flex-start;
+}
+
+@media (max-width: 767px) {
+  .ot-sticky-preview-card {
+    position: static;
+  }
+}
