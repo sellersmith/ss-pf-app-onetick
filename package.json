@@ -10,6 +10,7 @@
     ".": "./apps/onetick/src/index.ts",
     "./manifest": "./apps/onetick/manifest.ts",
     "./admin-runtime-loader": "./apps/onetick/src/admin/runtime-loader.tsx",
+    "./backend/plugin": "./apps/onetick/src/backend/plugin.ts",
     "./storefront/runtime-contract": "./apps/onetick/src/storefront/runtime-contract.ts",
     "./storefront/runtime-installer": "./apps/onetick/src/storefront/runtime-installer.ts"
   },

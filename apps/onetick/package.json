@@ -8,6 +8,7 @@
     ".": "./src/index.ts",
     "./manifest": "./manifest.ts",
     "./admin-runtime-loader": "./src/admin/runtime-loader.tsx",
+    "./backend/plugin": "./src/backend/plugin.ts",
     "./storefront/runtime-contract": "./src/storefront/runtime-contract.ts",
     "./storefront/runtime-installer": "./src/storefront/runtime-installer.ts"
   },
