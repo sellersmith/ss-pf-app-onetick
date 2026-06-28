@@ -60,12 +60,20 @@ if (!workflow.includes('dist/artifacts/*.tgz.release.json')) {
   throw new Error('OneTick artifact workflow must upload release metadata')
 }
 
+if (!workflow.includes('APP_PLATFORM_ARTIFACT_VERSION') || !workflow.includes('${GITHUB_REF_NAME#onetick-v}')) {
+  throw new Error('OneTick artifact workflow must derive artifact version from release tag')
+}
+
 if (!workflow.includes('Notify artifact failure')) {
   throw new Error('OneTick artifact workflow must include failure notification hook')
 }
 
 if (!packageArtifactScript.includes('writeReleaseMetadata')) {
   throw new Error('OneTick artifact package script must write release metadata')
+}
+
+if (!packageArtifactScript.includes('process.env.APP_PLATFORM_ARTIFACT_VERSION')) {
+  throw new Error('OneTick artifact package script must accept APP_PLATFORM_ARTIFACT_VERSION')
 }
 
 if (!packageArtifactScript.includes("const adminEntrySource = 'src/admin/runtime-entry.tsx'") || !packageArtifactScript.includes('entrySource: adminEntrySource')) {
