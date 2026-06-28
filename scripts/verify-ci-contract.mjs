@@ -10,7 +10,9 @@ const requiredFiles = [
   'docs/devops-handoff.md',
   'scripts/build-admin-artifact.mjs',
   'scripts/package-app-platform-admin-artifact.mjs',
+  'scripts/package-app-platform-artifact.mjs',
   'scripts/deploy-app-platform-admin-artifact.mjs',
+  '.github/workflows/app-platform-artifact.yml',
   'apps/onetick/package.json',
   'apps/onetick/src/admin/runtime-entry.tsx',
   'apps/onetick/src/admin/runtime-loader.tsx',
@@ -19,7 +21,11 @@ const requiredFiles = [
 
 const packageJson = JSON.parse(fs.readFileSync(path.join(repoRoot, 'package.json'), 'utf8'))
 const onetickPackageJson = JSON.parse(fs.readFileSync(path.join(repoRoot, 'apps/onetick/package.json'), 'utf8'))
+const workflow = fs.readFileSync(path.join(repoRoot, '.github/workflows/app-platform-artifact.yml'), 'utf8')
+const packageArtifactScript = fs.readFileSync(path.join(repoRoot, 'scripts/package-app-platform-artifact.mjs'), 'utf8')
 const requiredScripts = [
+  'build:artifact',
+  'package:artifact',
   'build:admin-artifact',
   'package:admin-artifact',
   'deploy:admin-artifact',
@@ -40,6 +46,30 @@ for (const script of requiredScripts) {
 
 if (onetickPackageJson.scripts?.['build:admin-artifact'] !== 'npm run build:admin-runtime && npm run package:admin-artifact') {
   throw new Error('OneTick package is missing build:admin-artifact contract')
+}
+
+if (onetickPackageJson.scripts?.['build:artifact'] !== 'npm run build:admin-runtime && npm run package:artifact') {
+  throw new Error('OneTick package is missing build:artifact contract')
+}
+
+if (onetickPackageJson.scripts?.['package:artifact'] !== 'node ../../scripts/package-app-platform-artifact.mjs') {
+  throw new Error('OneTick package is missing package:artifact contract')
+}
+
+if (!workflow.includes('dist/artifacts/*.tgz.release.json')) {
+  throw new Error('OneTick artifact workflow must upload release metadata')
+}
+
+if (!workflow.includes('Notify artifact failure')) {
+  throw new Error('OneTick artifact workflow must include failure notification hook')
+}
+
+if (!packageArtifactScript.includes('writeReleaseMetadata')) {
+  throw new Error('OneTick artifact package script must write release metadata')
+}
+
+if (!packageArtifactScript.includes("const adminEntrySource = 'src/admin/runtime-entry.tsx'") || !packageArtifactScript.includes('entrySource: adminEntrySource')) {
+  throw new Error('OneTick artifact package script must publish admin.entrySource')
 }
 
 if (onetickPackageJson.scripts?.['package:admin-artifact'] !== 'node ../../scripts/package-app-platform-admin-artifact.mjs --app onetick') {
