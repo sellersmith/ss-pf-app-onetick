@@ -1,5 +1,7 @@
 // OneTick admin runtime entry for app-owned artifact deploys outside the PageFly core build.
 import React from 'react'
+import { AppProvider as PolarisAppProvider } from '@shopify/polaris'
+import polarisTranslations from '@shopify/polaris/locales/en.json'
 import { createRoot, type Root } from 'react-dom/client'
 import type { AdminAppHost } from '../../../../web/core/src/app-platform/admin'
 import { OneTickAdmin } from './index'
@@ -29,7 +31,11 @@ export function mount(container: Element, host: AdminAppHost): void {
   unmount(container)
 
   const root = createRoot(container)
-  root.render(<OneTickAdmin host={host} />)
+  root.render(
+    <PolarisAppProvider i18n={polarisTranslations}>
+      <OneTickAdmin host={host} />
+    </PolarisAppProvider>
+  )
   roots.set(container, root)
 }
 
@@ -39,4 +45,3 @@ if (typeof window !== 'undefined') {
     onetick: { mount, unmount },
   }
 }
-

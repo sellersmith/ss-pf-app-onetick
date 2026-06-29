@@ -23,6 +23,7 @@ const packageJson = JSON.parse(fs.readFileSync(path.join(repoRoot, 'package.json
 const onetickPackageJson = JSON.parse(fs.readFileSync(path.join(repoRoot, 'apps/onetick/package.json'), 'utf8'))
 const workflow = fs.readFileSync(path.join(repoRoot, '.github/workflows/app-platform-artifact.yml'), 'utf8')
 const packageArtifactScript = fs.readFileSync(path.join(repoRoot, 'scripts/package-app-platform-artifact.mjs'), 'utf8')
+const adminRuntimeEntry = fs.readFileSync(path.join(repoRoot, 'apps/onetick/src/admin/runtime-entry.tsx'), 'utf8')
 const requiredScripts = [
   'build:artifact',
   'package:artifact',
@@ -78,6 +79,14 @@ if (!packageArtifactScript.includes('process.env.APP_PLATFORM_ARTIFACT_VERSION')
 
 if (!packageArtifactScript.includes("const adminEntrySource = 'src/admin/runtime-entry.tsx'") || !packageArtifactScript.includes('entrySource: adminEntrySource')) {
   throw new Error('OneTick artifact package script must publish admin.entrySource')
+}
+
+if (
+  !adminRuntimeEntry.includes('AppProvider as PolarisAppProvider') ||
+  !adminRuntimeEntry.includes('@shopify/polaris/locales/en.json') ||
+  !adminRuntimeEntry.includes('<PolarisAppProvider i18n={polarisTranslations}>')
+) {
+  throw new Error('OneTick admin runtime must wrap its remote React root with Polaris AppProvider i18n')
 }
 
 if (onetickPackageJson.scripts?.['package:admin-artifact'] !== 'node ../../scripts/package-app-platform-admin-artifact.mjs --app onetick') {
