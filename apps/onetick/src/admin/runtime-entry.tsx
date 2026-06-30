@@ -3,6 +3,7 @@ import React from 'react'
 import { AppProvider as PolarisAppProvider } from '@shopify/polaris'
 import polarisTranslations from '@shopify/polaris/locales/en.json'
 import { createRoot, type Root } from 'react-dom/client'
+import { MemoryRouter } from 'react-router-dom'
 import type { AdminAppHost } from '../../../../web/core/src/app-platform/admin'
 import { OneTickAdmin } from './index'
 
@@ -33,7 +34,15 @@ export function mount(container: Element, host: AdminAppHost): void {
   const root = createRoot(container)
   root.render(
     <PolarisAppProvider i18n={polarisTranslations}>
-      <OneTickAdmin host={host} />
+      {/*
+        OneTick mounts as its own React root, so it can't share PageFly's Router.
+        The PageFly host owns the real admin URL: each navigation re-runs mount() with a
+        fresh host, so we seed the in-memory history from host.route.relativePath to keep
+        the internal <Routes> in sync with the host URL (e.g. /new, /edit/:id).
+      */}
+      <MemoryRouter initialEntries={[host.route.relativePath || '/']}>
+        <OneTickAdmin host={host} />
+      </MemoryRouter>
     </PolarisAppProvider>
   )
   roots.set(container, root)
