@@ -28,7 +28,7 @@ export const onetickStorefrontContribution = {
   globalStoreKey: ONETICK_STORE_GLOBAL,
   liquidConfigTemplate: ONETICK_STOREFRONT_LIQUID_CONFIG,
   runtimeInstaller: {
-    module: '@pagefly-apps/onetick/src/storefront/runtime-installer',
+    module: '@pagefly/app-onetick/storefront/runtime-installer',
     exportName: 'installOneTickStorefrontRuntime',
   },
   cartIntent: ONETICK_CART_INTENT,

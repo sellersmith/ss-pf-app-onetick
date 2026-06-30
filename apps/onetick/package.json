@@ -3,12 +3,22 @@
   "version": "0.1.0",
   "private": true,
   "description": "PageFly internal OneTick app package",
-  "main": "src/backend/plugin.ts",
+  "main": "src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./manifest": "./manifest.ts",
+    "./admin-runtime-loader": "./src/admin/runtime-loader.tsx",
+    "./backend/plugin": "./src/backend/plugin.ts",
+    "./storefront/runtime-contract": "./src/storefront/runtime-contract.ts",
+    "./storefront/runtime-installer": "./src/storefront/runtime-installer.ts"
+  },
   "scripts": {
     "build": "npm run build:server && npm run build:theme",
     "build:server": "npm --workspace pagefly-server run build:apps -- --app onetick",
     "build:theme": "npm --workspace pagefly-app-platform-src run build -- --app onetick",
     "build:admin-runtime": "vite build --config vite.admin-runtime.config.mts",
+    "build:artifact": "npm run build:admin-runtime && npm run package:artifact",
+    "package:artifact": "node ../../scripts/package-app-platform-artifact.mjs",
     "build:admin-artifact": "npm run build:admin-runtime && npm run package:admin-artifact",
     "package:admin-artifact": "node ../../scripts/package-app-platform-admin-artifact.mjs --app onetick"
   },
